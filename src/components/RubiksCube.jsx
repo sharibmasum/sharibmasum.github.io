@@ -30,8 +30,9 @@ const RubiksCube = forwardRef((props, ref) => {
         console.log('Found animation, playing it')
         const action = actions[name]
         action.reset()
-        action.setLoop(0, 1) // Play once
+        action.setLoop(0, 1)
         action.clampWhenFinished = true
+        action.timeScale = 2.7
         
         return new Promise((resolve) => {
           action.play()

@@ -125,10 +125,13 @@ const MainCube = () => {
         <button 
           onClick={handleAnimate}
           disabled={hasAnimated || isAnimating}
-          className={`sm:text-xl text-base font-medium text-white text-center font-generalsans 
-            transition-all duration-300 hover:scale-105 ${(hasAnimated || isAnimating) ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:text-green-400'}`}
+          className={`w-[280px] sm:w-[400px] px-6 py-3 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 
+            border border-green-500/50 shadow-2xl shadow-black-200
+            sm:text-xl text-base font-medium text-white text-center font-generalsans 
+            transition-all duration-300 hover:scale-105 
+            ${(hasAnimated || isAnimating) ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
         > 
-          Click here to find out more about me and my work
+          Find out more about me and my work
         </button>
       </div>
     </section>
