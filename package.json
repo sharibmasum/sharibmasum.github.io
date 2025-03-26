@@ -2,6 +2,7 @@
   "name": "sharibmasum.github.io",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://sharibmasum.github.io/sharibmasum.github.io",
   "type": "module",
   "scripts": {
     "dev": "vite",
