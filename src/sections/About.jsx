@@ -14,14 +14,14 @@ const About = () => {
   };
 
   return (
-    <section className="c-space pt-40 pb-6 min-h-[75vh]" id="about">
+    <section className="c-space pt-20 sm:pt-40 pb-6 min-h-[75vh]" id="about">
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 h-full">
         <div className="col-span-1">
           <div className="grid-container p-4 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 border border-green-500/50 shadow-2xl shadow-black-200">
             <div>
               <p className="grid-headtext">Hi, I'm Sharib Masum</p>
               <p className="grid-subtext">
-                I am an electrical engineering student at Western University with a deep passion for math, physics, and computer science. 
+                I am an engineering student at Western University with a deep passion for math, physics, and computer science. 
                 I build anything that catches my interest and am always willing to learn something new.
               </p>
             </div>
