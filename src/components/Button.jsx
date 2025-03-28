@@ -1,6 +1,13 @@
 const Button = ({ name, isBeam = false, containerClass }) => {
+  const handleClick = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <button className={`btn ${containerClass}`}>
+    <button onClick={handleClick} className={`btn ${containerClass}`}>
       {isBeam && (
         <span className="relative flex h-3 w-3">
           <span className="btn-ping"></span>

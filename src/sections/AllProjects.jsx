@@ -37,17 +37,16 @@ const GitHubProjects = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         {projects.map((project) => (
-          <div key={project.id} className="project-card p-6 rounded-lg bg-black-200 border border-black-300 hover:border-green-500/50 hover:bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 transition-all duration-300">
+          <a 
+            key={project.id} 
+            href={project.html_url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="project-card p-6 rounded-lg bg-black-200 border border-black-300 hover:border-green-500/50 hover:bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 transition-all duration-300 cursor-pointer block"
+          >
             <div className="flex justify-between items-start mb-4">
               <h4 className="text-xl font-semibold text-white">{project.name}</h4>
-              <a 
-                href={project.html_url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-white-600 hover:text-white transition-colors"
-              >
-                <img src="/assets/github.svg" alt="GitHub" className="w-6 h-6" />
-              </a>
+              <img src="/assets/github.svg" alt="GitHub" className="w-6 h-6 text-white-600" />
             </div>
             
             <p className="text-white-600 mb-4">{project.description || 'No description available'}</p>
@@ -62,7 +61,7 @@ const GitHubProjects = () => {
                 </span>
               ))}
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </section>
