@@ -1,10 +1,13 @@
-import MainCube from './sections/MainCube.jsx';
-import About from './sections/About.jsx';
-import Footer from './sections/Footer.jsx';
+import { Suspense, lazy } from 'react';
 import Navbar from './sections/Navbar.jsx';
-import Contact from './sections/Contact.jsx';
-import CurrentProject from './sections/CurrentProject.jsx';
-import AllProjects from './sections/AllProjects.jsx';
+import MainCube from './sections/MainCube.jsx';
+
+// Lazy load other components
+const About = lazy(() => import('./sections/About.jsx'));
+const Footer = lazy(() => import('./sections/Footer.jsx'));
+const Contact = lazy(() => import('./sections/Contact.jsx'));
+const CurrentProject = lazy(() => import('./sections/CurrentProject.jsx'));
+const AllProjects = lazy(() => import('./sections/AllProjects.jsx'));
 
 const App = () => {
   return (
@@ -12,11 +15,13 @@ const App = () => {
       <div className="max-w-7xl mx-auto">
         <Navbar />
         <MainCube />
-        <About />
-        <CurrentProject />  
-        <AllProjects />
-        <Contact /> 
-        <Footer />
+        <Suspense fallback={<div className="min-h-screen"></div>}>
+          <About />
+          <CurrentProject />  
+          <AllProjects />
+          <Contact /> 
+          <Footer />
+        </Suspense>
       </div>
     </main>
   );

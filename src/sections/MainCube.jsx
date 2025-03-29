@@ -66,6 +66,7 @@ const MainCube = () => {
         if (success) {
           setHasAnimated(true)
           setIsAnimating(false)
+          window.dispatchEvent(new CustomEvent('showNavbar'))
           window.location.href = '/#about'
         } else {
           console.error('Animation failed to play')
@@ -121,7 +122,7 @@ const MainCube = () => {
         </div>
       </div>
 
-      <div className='relative z-10 w-full mx-auto flex justify-center'>
+      <div className='absolute bottom-8 left-0 right-0 z-20 flex justify-center'>
         <button 
           onClick={handleAnimate}
           disabled={hasAnimated || isAnimating}
