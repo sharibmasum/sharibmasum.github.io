@@ -34,6 +34,11 @@ const Navbar = () => {
     return localStorage.getItem('navbarVisible') === 'true';
   });
 
+  // Get the base URL for assets
+  const baseUrl = import.meta.env.MODE === 'production' 
+    ? '/sharibmasum.github.io'
+    : '';
+
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
 
@@ -52,14 +57,14 @@ const Navbar = () => {
         if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
           setActiveSection(sectionId);
           // Update URL hash without triggering scroll
-          history.replaceState(null, null, `#${sectionId}`);
+          history.replaceState(null, null, `${baseUrl}/#${sectionId}`);
         }
       });
 
       // Check if we're at the top of the page
       if (scrollY < 100) {
         setActiveSection('home');
-        history.replaceState(null, null, ' ');
+        history.replaceState(null, null, `${baseUrl}/`);
       }
     };
 
@@ -72,6 +77,8 @@ const Navbar = () => {
           const targetElement = document.getElementById(targetId);
           if (targetElement) {
             targetElement.scrollIntoView({ behavior: 'smooth' });
+            // Update URL with correct base path
+            history.replaceState(null, null, `${baseUrl}/${href}`);
           }
         }
       }
@@ -95,7 +102,7 @@ const Navbar = () => {
       document.removeEventListener('click', handleClick);
       window.removeEventListener('showNavbar', handleShowNavbar);
     };
-  }, []);
+  }, [baseUrl]);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
@@ -110,7 +117,7 @@ const Navbar = () => {
     }`}>
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center py-5 mx-auto px-4 sm:px-6 lg:px-8">
-          <a href="/" className="text-neutral-400 font-bold text-xl hover:text-white transition-colors">
+          <a href={baseUrl || '/'} className="text-neutral-400 font-bold text-xl hover:text-white transition-colors">
             Sharib Masum
           </a>
 
@@ -118,7 +125,11 @@ const Navbar = () => {
             onClick={toggleMenu}
             className="text-neutral-400 hover:text-white focus:outline-none sm:hidden flex"
             aria-label="Toggle menu">
-            <img src={isOpen ? './assets/close.svg' : './assets/menu.svg'} alt="toggle" className="w-6 h-6" />
+            <img 
+              src={`${baseUrl}/assets/${isOpen ? 'close.svg' : 'menu.svg'}`} 
+              alt="toggle" 
+              className="w-6 h-6" 
+            />
           </button>
 
           <nav className="sm:flex hidden">

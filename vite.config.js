@@ -11,7 +11,7 @@ export default defineConfig({
       ext: '.gz',
     })
   ],
-  base: './',
+  base: '/sharibmasum.github.io/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
