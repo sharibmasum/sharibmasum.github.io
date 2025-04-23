@@ -70,6 +70,7 @@ const MainCube = () => {
         if (success) {
           setHasAnimated(true);
           setIsAnimating(false);
+          localStorage.setItem('navbarVisible', 'true');
           window.dispatchEvent(new CustomEvent('showNavbar'));
           window.location.hash = '#about';
         } else {

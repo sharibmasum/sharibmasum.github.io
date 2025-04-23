@@ -29,6 +29,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isTransparent, setIsTransparent] = useState(true);
+  const [isVisible, setIsVisible] = useState(() => {
+    // Check localStorage on initial render
+    return localStorage.getItem('navbarVisible') === 'true';
+  });
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
@@ -73,8 +77,15 @@ const Navbar = () => {
       }
     };
 
+    // Listen for the custom event to show navbar
+    const handleShowNavbar = () => {
+      setIsVisible(true);
+      localStorage.setItem('navbarVisible', 'true');
+    };
+
     document.addEventListener('scroll', handleScroll);
     document.addEventListener('click', handleClick);
+    window.addEventListener('showNavbar', handleShowNavbar);
 
     // Initial check
     handleScroll();
@@ -82,11 +93,14 @@ const Navbar = () => {
     return () => {
       document.removeEventListener('scroll', handleScroll);
       document.removeEventListener('click', handleClick);
+      window.removeEventListener('showNavbar', handleShowNavbar);
     };
   }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+
+  if (!isVisible) return null;
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${
