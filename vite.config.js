@@ -11,7 +11,7 @@ export default defineConfig({
       ext: '.gz',
     })
   ],
-  base: '/',
+  base: process.env.NODE_ENV === 'production' ? '/sharibmasum.github.io/' : '/',
   build: {
     rollupOptions: {
       output: {

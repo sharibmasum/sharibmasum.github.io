@@ -1,5 +1,4 @@
 import { Suspense, lazy } from 'react';
-import Navbar from './sections/Navbar.jsx';
 import MainCube from './sections/MainCube.jsx';
 
 // Lazy load other components
@@ -13,7 +12,6 @@ const App = () => {
   return (
     <main className="relative w-full min-h-screen overflow-x-hidden bg-[#141414]">
       <div className="max-w-7xl mx-auto">
-        <Navbar />
         <MainCube />
         <Suspense fallback={<div className="min-h-screen"></div>}>
           <About />

@@ -45,39 +45,43 @@ const MainCube = () => {
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash
+      const hash = window.location.hash;
       if (hash && hash !== '#home' && !hasAnimated) {
-        window.location.hash = '#home'
+        window.location.hash = '#home';
       }
     }
 
-    handleHashChange()
+    // Set initial hash if not present
+    if (!window.location.hash) {
+      window.location.hash = '#home';
+    }
 
-    window.addEventListener('hashchange', handleHashChange)
-    return () => window.removeEventListener('hashchange', handleHashChange)
-  }, [hasAnimated])
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [hasAnimated]);
 
   const handleAnimate = async () => {
     if (cubeRef.current && !hasAnimated && !isAnimating) {
-      setIsAnimating(true)
+      setIsAnimating(true);
       try {
-        const success = await cubeRef.current.playAnimation('Animation')
+        const success = await cubeRef.current.playAnimation('Animation');
         
         if (success) {
-          setHasAnimated(true)
-          setIsAnimating(false)
-          window.dispatchEvent(new CustomEvent('showNavbar'))
-          window.location.href = '/#about'
+          setHasAnimated(true);
+          setIsAnimating(false);
+          window.dispatchEvent(new CustomEvent('showNavbar'));
+          window.location.hash = '#about';
         } else {
-          console.error('Animation failed to play')
-          setIsAnimating(false)
+          console.error('Animation failed to play');
+          setIsAnimating(false);
         }
       } catch (error) {
-        console.error('Animation error:', error)
-        setIsAnimating(false)
+        console.error('Animation error:', error);
+        setIsAnimating(false);
       }
     }
-  }
+  };
 
   return (
     <section id="home" className='relative min-h-screen bg-[#141414] flex flex-col justify-start pt-10 sm:pt-20 gap-6 sm:gap-10'> 
@@ -122,14 +126,14 @@ const MainCube = () => {
         </div>
       </div>
 
-      <div className='absolute bottom-8 left-0 right-0 z-20 flex justify-center'>
+      <div className='relative bottom-8 left-0 right-0 z-50 flex justify-center px-4 mt-8'>
         <button 
           onClick={handleAnimate}
           disabled={hasAnimated || isAnimating}
-          className={`w-[280px] sm:w-[400px] px-6 py-3 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 
-            border border-green-500/50 shadow-2xl shadow-black-200
+          className={`w-full max-w-[400px] px-6 py-4 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 
+            border-2 border-green-500/70 shadow-2xl shadow-black-200
             sm:text-xl text-base font-medium text-white text-center font-generalsans 
-            transition-all duration-300 hover:scale-105 
+            transition-all duration-300 hover:scale-105 hover:border-green-500
             ${(hasAnimated || isAnimating) ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
         > 
           Find out more about me and my work
