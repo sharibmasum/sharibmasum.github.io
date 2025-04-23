@@ -15,6 +15,7 @@ const About = () => {
 
   return (
     <section className="c-space pt-20 sm:pt-40 pb-6 min-h-[75vh]" id="about">
+      <h3 className="head-text mb-6">About Me</h3>
       <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 h-full">
         <div className="col-span-1">
           <div className="grid-container p-4 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 border border-green-500/50 shadow-2xl shadow-black-200">
