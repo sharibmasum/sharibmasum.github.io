@@ -70,7 +70,6 @@ const MainCube = () => {
         if (success) {
           setHasAnimated(true);
           setIsAnimating(false);
-          localStorage.setItem('navbarVisible', 'true');
           window.dispatchEvent(new CustomEvent('showNavbar'));
           window.location.hash = '#about';
         } else {
@@ -85,7 +84,7 @@ const MainCube = () => {
   };
 
   return (
-    <section id="home" className='relative h-screen bg-[#141414] flex flex-col justify-between py-10 sm:py-20'> 
+    <section id="home" className='relative min-h-screen bg-[#141414] flex flex-col justify-start pt-10 sm:pt-20 gap-6 sm:gap-10'> 
       <div className='relative z-10 w-full mx-auto flex flex-col space-y-2 sm:space-y-3'>
         <div className="sm:text-3xl text-lg font-medium text-white text-center font-generalsans">
           Hello, I am Sharib. A software engineer.
@@ -95,7 +94,7 @@ const MainCube = () => {
         </div>
       </div>
 
-      <div className='flex-1 w-full flex items-center justify-center min-h-[45vh] sm:min-h-[50vh]'>
+      <div className='w-full h-[45vh] sm:h-[60vh] flex items-center justify-center'>
         <div style={{ 
           width: '100%',
           height: '100%',
@@ -127,7 +126,7 @@ const MainCube = () => {
         </div>
       </div>
 
-      <div className='relative z-50 flex justify-center px-4 mt-8'>
+      <div className='relative bottom-8 left-0 right-0 z-50 flex justify-center px-4 mt-8'>
         <button 
           onClick={handleAnimate}
           disabled={hasAnimated || isAnimating}
