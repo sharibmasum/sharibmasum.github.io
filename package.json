@@ -2,7 +2,7 @@
   "name": "sharibmasum.github.io",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://sharibmasum.com",
+  "homepage": "https://sharibmasum.ca",
   "type": "module",
   "scripts": {
     "dev": "vite",
