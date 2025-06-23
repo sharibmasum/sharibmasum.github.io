@@ -47,6 +47,41 @@ const Projects = () => {
             </a>
           </div>
         </div>
+
+        <p className="head-text mb-6 mt-12">Recently Updated</p>
+
+        <div className="flex flex-col gap-4 relative p-6 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 border border-green-500/50 shadow-2xl shadow-black-200">
+          <div className="flex flex-col gap-3 text-white-600">
+            <p className="text-white text-2xl font-semibold animatedText">PercentDone.com</p>
+            <p className="animatedText text-sm sm:text-base">A modern web application that helps users track and visualize their progress on various projects and goals. Set milestones, track completion percentages, and stay motivated with an intuitive interface.</p>
+          </div>
+
+          <div className="w-full h-[80px] rounded-lg overflow-hidden animatedText bg-gradient-to-br from-green-500/20 to-green-700/20 border border-green-500/30 flex items-center justify-center">
+            <a
+              href="https://www.percentdone.com"
+              target="_blank"
+              rel="noreferrer"
+              className="text-white text-lg font-semibold hover:text-green-400 transition-colors duration-300">
+              Visit PercentDone.com
+            </a>
+          </div>
+
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-white-600 text-sm">React</span>
+              <span className="text-white-600 text-sm">Supabase</span>
+              <span className="text-white-600 text-sm">Tailwind CSS</span>
+            </div>
+
+            <a
+              className="flex items-center gap-2 cursor-pointer text-white-600 hover:text-green-500 transition-colors duration-300 text-sm"
+              href="https://github.com/sharibmasum/PercentDone"
+              target="_blank"
+              rel="noreferrer">
+              <p>GitHub</p>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

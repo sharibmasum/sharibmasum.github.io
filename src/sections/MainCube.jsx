@@ -3,6 +3,81 @@ import { OrbitControls } from '@react-three/drei'
 import { useRef, useState, useEffect } from 'react'
 import RubiksCube from '../components/RubiksCube.jsx'
 
+// Custom hook for typing animation
+const useTypingAnimation = (staticText, alternatingTexts, typingSpeed = 100, deletingSpeed = 50, pauseTime = 2000, shouldStop = false) => {
+  const [firstTextComplete, setFirstTextComplete] = useState(false)
+  const [currentTextIndex, setCurrentTextIndex] = useState(0)
+  const [currentCharIndex, setCurrentCharIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [displayTexts, setDisplayTexts] = useState(['', ''])
+
+  useEffect(() => {
+    if (shouldStop) return; // Stop animation if shouldStop is true
+
+    if (!firstTextComplete) {
+      // Typing the first (static) text
+      if (currentCharIndex < staticText.length) {
+        const timer = setTimeout(() => {
+          setDisplayTexts(prev => {
+            const newTexts = [...prev]
+            newTexts[0] = staticText.slice(0, currentCharIndex + 1)
+            return newTexts
+          })
+          setCurrentCharIndex(currentCharIndex + 1)
+        }, typingSpeed)
+        return () => clearTimeout(timer)
+      } else {
+        // First text complete, start alternating second text
+        setFirstTextComplete(true)
+        setCurrentCharIndex(0)
+      }
+    } else {
+      // Handle alternating second text
+      const currentText = alternatingTexts[currentTextIndex]
+      
+      if (!isDeleting) {
+        // Typing phase
+        if (currentCharIndex < currentText.length) {
+          const timer = setTimeout(() => {
+            setDisplayTexts(prev => {
+              const newTexts = [...prev]
+              newTexts[1] = currentText.slice(0, currentCharIndex + 1)
+              return newTexts
+            })
+            setCurrentCharIndex(currentCharIndex + 1)
+          }, typingSpeed)
+          return () => clearTimeout(timer)
+        } else {
+          // Finished typing, wait then start deleting
+          const timer = setTimeout(() => {
+            setIsDeleting(true)
+          }, pauseTime)
+          return () => clearTimeout(timer)
+        }
+      } else {
+        // Deleting phase
+        if (currentCharIndex > 0) {
+          const timer = setTimeout(() => {
+            setDisplayTexts(prev => {
+              const newTexts = [...prev]
+              newTexts[1] = currentText.slice(0, currentCharIndex - 1)
+              return newTexts
+            })
+            setCurrentCharIndex(currentCharIndex - 1)
+          }, deletingSpeed)
+          return () => clearTimeout(timer)
+        } else {
+          // Finished deleting, move to next text
+          setIsDeleting(false)
+          setCurrentTextIndex((prevIndex) => (prevIndex + 1) % alternatingTexts.length)
+        }
+      }
+    }
+  }, [firstTextComplete, currentTextIndex, currentCharIndex, isDeleting, staticText, alternatingTexts, typingSpeed, deletingSpeed, pauseTime, shouldStop])
+
+  return displayTexts
+}
+
 const MainCube = () => {
   const cubeRef = useRef()
   const controlsRef = useRef()
@@ -10,6 +85,13 @@ const MainCube = () => {
   const [isAnimating, setIsAnimating] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
+
+  // Typing animation texts
+  const firstText = "Hello, I am Sharib. A software engineer."
+  const secondText = "I like solving problems, one step at a time. Just like solving a rubik's cube."
+  const thirdText = "Well, what are you waiting for? Click the button below to see my work!"
+  
+  const displayTexts = useTypingAnimation(firstText, [secondText, thirdText], 53, 27, 3000, hasAnimated)
 
   useEffect(() => {
     const checkMobile = () => {
@@ -86,11 +168,13 @@ const MainCube = () => {
   return (
     <section id="home" className='relative min-h-screen bg-[#141414] flex flex-col justify-start pt-10 sm:pt-20 gap-6 sm:gap-10'> 
       <div className='relative z-10 w-full mx-auto flex flex-col space-y-2 sm:space-y-3'>
-        <div className="sm:text-3xl text-lg font-medium text-white text-center font-generalsans">
-          Hello, I am Sharib. A software engineer.
+        <div className="sm:text-3xl text-lg font-medium text-white text-center font-generalsans min-h-[1.5em]">
+          {displayTexts[0]}
+          <span className="animate-pulse">|</span>
         </div>
-        <div className="sm:text-xl text-base text-white/80 text-center font-generalsans">
-          I like solving problems, one step at a time. Just like solving a rubik's cube.
+        <div className="sm:text-xl text-base text-white/80 text-center font-generalsans min-h-[1.5em]">
+          {displayTexts[1]}
+          <span className="animate-pulse">|</span>
         </div>
       </div>
 
@@ -126,17 +210,23 @@ const MainCube = () => {
         </div>
       </div>
 
-      <div className='relative bottom-8 left-0 right-0 z-50 flex justify-center px-4 mt-8'>
+      <div className='relative bottom-8 left-0 right-0 z-50 flex justify-center px-4 mt-8 mb-8'>
         <button 
           onClick={handleAnimate}
           disabled={hasAnimated || isAnimating}
-          className={`w-full max-w-[400px] px-6 py-4 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 
+          className={`px-4 sm:px-6 py-3 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 
             border-2 border-green-500/70 shadow-2xl shadow-black-200
-            sm:text-xl text-base font-medium text-white text-center font-generalsans 
+            text-sm sm:text-lg md:text-xl font-medium text-white text-center font-generalsans 
             transition-all duration-300 hover:scale-105 hover:border-green-500
-            ${(hasAnimated || isAnimating) ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+            ${(hasAnimated || isAnimating) ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
+            ${!hasAnimated && !isAnimating ? 'animate-pulse hover:animate-none' : ''}
+            relative overflow-hidden group max-w-[90vw] sm:max-w-none`}
         > 
-          Find out more about me and my work
+          <span className="relative z-10">
+            Click me to find out more about my work
+          </span>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/20 to-transparent 
+            translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
         </button>
       </div>
     </section>
