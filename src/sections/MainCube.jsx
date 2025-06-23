@@ -223,7 +223,7 @@ const MainCube = () => {
             relative overflow-hidden group max-w-[90vw] sm:max-w-none`}
         > 
           <span className="relative z-10">
-            Click me to find out more about my work
+            Click here to find out more about my work
           </span>
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/20 to-transparent 
             translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
