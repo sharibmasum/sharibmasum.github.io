@@ -87,7 +87,7 @@ const MainCube = () => {
   const [isVisible, setIsVisible] = useState(true)
 
   // Typing animation texts
-  const firstText = "Hello, I am Sharib. A software engineer."
+  const firstText = "Hello, my name is Sharib. I'm a engineer."
   const secondText = "I like solving problems, one step at a time. Just like solving a rubik's cube."
   const thirdText = "Well, what are you waiting for? Click the button below to see my work!"
   

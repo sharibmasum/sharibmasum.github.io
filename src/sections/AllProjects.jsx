@@ -9,7 +9,10 @@ const GitHubProjects = () => {
       try {
         const response = await fetch('https://api.github.com/users/sharibmasum/repos');
         const data = await response.json();
-        setProjects(data);
+        const sorted = Array.isArray(data)
+          ? [...data].sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
+          : [];
+        setProjects(sorted);
       } catch (error) {
         console.error('Error fetching GitHub projects:', error);
       } finally {

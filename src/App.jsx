@@ -4,7 +4,6 @@ import MainCube from './sections/MainCube.jsx';
 // Lazy load other components
 const About = lazy(() => import('./sections/About.jsx'));
 const Footer = lazy(() => import('./sections/Footer.jsx'));
-const Contact = lazy(() => import('./sections/Contact.jsx'));
 const CurrentProject = lazy(() => import('./sections/CurrentProject.jsx'));
 const AllProjects = lazy(() => import('./sections/AllProjects.jsx'));
 
@@ -17,7 +16,6 @@ const App = () => {
           <About />
           <CurrentProject />  
           <AllProjects />
-          <Contact /> 
           <Footer />
         </Suspense>
       </div>

@@ -20,6 +20,15 @@ const Projects = () => {
             <p className="animatedText text-sm sm:text-base">A gamified fitness application that turns your workout journey into an adventure. Plant and grow virtual trees as you achieve your fitness goals, creating your own personal forest of achievements.</p>
           </div>
 
+          <div className="animatedText">
+            <div className="flex items-center gap-3">
+              <div className="w-full h-2 bg-white-500/10 rounded">
+                <div className="h-2 bg-green-500 rounded" style={{ width: '30%' }} />
+              </div>
+              <span className="text-white text-sm font-semibold">30%</span>
+            </div>
+          </div>
+
           <div className="w-full h-[200px] sm:h-[300px] md:h-[400px] rounded-lg overflow-hidden animatedText">
             <iframe
               className="w-full h-full"
@@ -48,38 +57,70 @@ const Projects = () => {
           </div>
         </div>
 
-        <p className="head-text mb-6 mt-12">Recently Updated</p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
+          <div>
+            <p className="head-text mb-6">Recently Updated</p>
 
-        <div className="flex flex-col gap-4 relative p-6 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 border border-green-500/50 shadow-2xl shadow-black-200">
-          <div className="flex flex-col gap-3 text-white-600">
-            <p className="text-white text-2xl font-semibold animatedText">PercentDone.com</p>
-            <p className="animatedText text-sm sm:text-base">A modern web application that helps users track and visualize their progress on various projects and goals. Set milestones, track completion percentages, and stay motivated with an intuitive interface.</p>
-          </div>
+            <div className="flex flex-col gap-4 relative p-6 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 border border-green-500/50 shadow-2xl shadow-black-200">
+              <div className="flex flex-col gap-3 text-white-600">
+                <p className="text-white text-2xl font-semibold animatedText">PercentDone.com</p>
+                <p className="animatedText text-sm sm:text-base">A modern web application that helps users track and visualize their progress on various projects and goals. Set milestones, track completion percentages, and stay motivated with an intuitive interface.</p>
+              </div>
 
-          <div className="w-full h-[80px] rounded-lg overflow-hidden animatedText bg-gradient-to-br from-green-500/20 to-green-700/20 border border-green-500/30 flex items-center justify-center">
-            <a
-              href="https://www.percentdone.com"
-              target="_blank"
-              rel="noreferrer"
-              className="text-white text-lg font-semibold hover:text-green-400 transition-colors duration-300">
-              Visit PercentDone.com
-            </a>
-          </div>
+              <div className="w-full h-[80px] rounded-lg overflow-hidden animatedText bg-gradient-to-br from-green-500/20 to-green-700/20 border border-green-500/30 flex items-center justify-center">
+                <a
+                  href="https://www.percentdone.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white text-lg font-semibold hover:text-green-400 transition-colors duration-300">
+                  Visit PercentDone.com
+                </a>
+              </div>
 
-          <div className="flex items-center justify-between flex-wrap gap-3">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-white-600 text-sm">React</span>
-              <span className="text-white-600 text-sm">Supabase</span>
-              <span className="text-white-600 text-sm">Tailwind CSS</span>
+              <div className="flex items-center justify-between flex-wrap gap-3">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-white-600 text-sm">React</span>
+                  <span className="text-white-600 text-sm">Supabase</span>
+                  <span className="text-white-600 text-sm">Tailwind CSS</span>
+                </div>
+
+                <a
+                  className="flex items-center gap-2 cursor-pointer text-white-600 hover:text-green-500 transition-colors duration-300 text-sm"
+                  href="https://github.com/sharibmasum/PercentDone"
+                  target="_blank"
+                  rel="noreferrer">
+                  <p>GitHub</p>
+                </a>
+              </div>
             </div>
+          </div>
 
-            <a
-              className="flex items-center gap-2 cursor-pointer text-white-600 hover:text-green-500 transition-colors duration-300 text-sm"
-              href="https://github.com/sharibmasum/PercentDone"
-              target="_blank"
-              rel="noreferrer">
-              <p>GitHub</p>
-            </a>
+          <div>
+            <p className="head-text mb-6">Recently Finished</p>
+
+            <div className="flex flex-col gap-4 relative p-6 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 border border-green-500/50 shadow-2xl shadow-black-200">
+              <div className="flex flex-col gap-3 text-white-600">
+                <p className="text-white text-2xl font-semibold animatedText">Mac Volume Control</p>
+                <p className="animatedText text-sm sm:text-base">A lightweight macOS utility for quick, precise system volume control.</p>
+              </div>
+
+              <div className="w-full h-[80px] rounded-lg overflow-hidden animatedText bg-gradient-to-br from-green-500/20 to-green-700/20 border border-green-500/30 flex items-center justify-center">
+                <a
+                  href="https://github.com/sharibmasum?tab=repositories&q=mac%20volume%20control"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white text-lg font-semibold hover:text-green-400 transition-colors duration-300">
+                  View Mac Volume Control
+                </a>
+              </div>
+
+              <div className="flex items-center justify-between flex-wrap gap-3">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-white-600 text-sm">MediaPipe</span>
+                  <span className="text-white-600 text-sm">macOS</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

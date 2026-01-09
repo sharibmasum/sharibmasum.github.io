@@ -11,6 +11,7 @@ export default defineConfig({
       ext: '.gz',
     })
   ],
+  envDir: 'src',
   base: './',
   build: {
     outDir: 'dist',

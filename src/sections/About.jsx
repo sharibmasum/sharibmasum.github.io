@@ -5,7 +5,7 @@ const About = () => {
   const [hasCopied, setHasCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('sharibmasum@gmail.com');
+    navigator.clipboard.writeText('smasum@uwo.ca');
     setHasCopied(true);
 
     setTimeout(() => {
@@ -44,7 +44,7 @@ const About = () => {
         <div className="col-span-1">
           <div className="grid-container p-4 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 border border-green-500/50 shadow-2xl shadow-black-200">
             <div>
-              <p className="grid-headtext">Looking for Summer 2025 Opportunities</p>
+              <p className="grid-headtext">Looking for Summer 2026 Opportunities</p>
               <p className="grid-subtext">I'm based in Toronto, Canada and open to remote work worldwide.</p>
               <Button name="Contact Me" isBeam containerClass="w-full mt-4" />
             </div>
@@ -69,7 +69,7 @@ const About = () => {
               <p className="grid-subtext text-center">Contact me</p>
               <div className="copy-container" onClick={handleCopy}>
                 <span className="text-white text-xl">{hasCopied ? '✓' : '📋'}</span>
-                <p className="lg:text-2xl md:text-xl font-medium text-gray_gradient text-white">sharibmasum@gmail.com</p>
+                <p className="lg:text-2xl md:text-xl font-medium text-gray_gradient text-white">smasum@uwo.ca</p>
               </div>
             </div>
           </div>
