@@ -32,7 +32,7 @@ const RubiksCube = forwardRef((props, ref) => {
         action.reset()
         action.setLoop(0, 1)
         action.clampWhenFinished = true
-        action.timeScale = 2.5
+        action.timeScale = 4.0
         
         return new Promise((resolve) => {
           action.play()

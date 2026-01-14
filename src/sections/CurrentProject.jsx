@@ -10,7 +10,7 @@ const Projects = () => {
   }, [selectedProjectIndex]);
 
   return (
-    <section id="projects" className="min-h-screen flex flex-col justify-center py-8 pt-24">
+    <section id="projects" className="flex flex-col">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="head-text mb-6">Currently Working On</p>
 
@@ -61,7 +61,15 @@ const Projects = () => {
           <div>
             <p className="head-text mb-6">Recently Updated</p>
 
-            <div className="flex flex-col gap-4 relative p-6 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 border border-green-500/50 shadow-2xl shadow-black-200">
+            <div className="flex flex-col gap-4 relative p-6 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 border border-green-500/50 shadow-2xl shadow-black-200 lg:min-h-[520px]">
+              <div className="w-full h-[160px] sm:h-[200px] md:h-[240px] rounded-lg overflow-hidden animatedText">
+                <img
+                  src="/assets/Images/Productivity.png"
+                  alt="PercentDone.com preview"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
               <div className="flex flex-col gap-3 text-white-600">
                 <p className="text-white text-2xl font-semibold animatedText">PercentDone.com</p>
                 <p className="animatedText text-sm sm:text-base">A modern web application that helps users track and visualize their progress on various projects and goals. Set milestones, track completion percentages, and stay motivated with an intuitive interface.</p>
@@ -77,7 +85,7 @@ const Projects = () => {
                 </a>
               </div>
 
-              <div className="flex items-center justify-between flex-wrap gap-3">
+              <div className="flex items-center justify-between flex-wrap gap-3 mt-auto">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-white-600 text-sm">React</span>
                   <span className="text-white-600 text-sm">Supabase</span>
@@ -98,15 +106,23 @@ const Projects = () => {
           <div>
             <p className="head-text mb-6">Recently Finished</p>
 
-            <div className="flex flex-col gap-4 relative p-6 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 border border-green-500/50 shadow-2xl shadow-black-200">
+            <div className="flex flex-col gap-4 relative p-6 rounded-lg bg-gradient-to-br from-black-200 via-black-300 to-green-900/20 border border-green-500/50 shadow-2xl shadow-black-200 lg:min-h-[520px]">
+              <div className="w-full h-[140px] sm:h-[180px] md:h-[220px] rounded-lg overflow-hidden animatedText">
+                <img
+                  src="/assets/Images/VolumeControl.png"
+                  alt="Mac Volume Control preview"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
               <div className="flex flex-col gap-3 text-white-600">
                 <p className="text-white text-2xl font-semibold animatedText">Mac Volume Control</p>
                 <p className="animatedText text-sm sm:text-base">A lightweight macOS utility for quick, precise system volume control.</p>
               </div>
 
-              <div className="w-full h-[80px] rounded-lg overflow-hidden animatedText bg-gradient-to-br from-green-500/20 to-green-700/20 border border-green-500/30 flex items-center justify-center">
+              <div className="w-full h-[80px] rounded-lg overflow-hidden animatedText bg-gradient-to-br from-green-500/20 to-green-700/20 border border-green-500/30 flex items-center justify-center mt-2">
                 <a
-                  href="https://github.com/sharibmasum?tab=repositories&q=mac%20volume%20control"
+                  href="https://github.com/sharibmasum/MacVolumeControl"
                   target="_blank"
                   rel="noreferrer"
                   className="text-white text-lg font-semibold hover:text-green-400 transition-colors duration-300">
@@ -114,7 +130,7 @@ const Projects = () => {
                 </a>
               </div>
 
-              <div className="flex items-center justify-between flex-wrap gap-3">
+              <div className="flex items-center justify-between flex-wrap gap-3 mt-auto">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-white-600 text-sm">MediaPipe</span>
                   <span className="text-white-600 text-sm">macOS</span>

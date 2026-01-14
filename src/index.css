@@ -17,7 +17,7 @@ body {
 }
 
 section {
-  min-height: 65vh;
+  min-height: auto;
   padding-top: 50px;
 }
 
